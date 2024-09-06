@@ -1,6 +1,9 @@
-#include "ft_printf.h"
+//#include "ft_printf.h"
+//#include <unistd.h>
+//#include "libc_utils.c"
+//#include "ft_printf.c"
 
-static void	print_dec_to_hex(unsigned int n, char flag, int prefix)
+static int	print_dec_to_hex(unsigned int n, char flag, int prefix, int count)
 {
 	unsigned int	rem;
 
@@ -10,17 +13,20 @@ static void	print_dec_to_hex(unsigned int n, char flag, int prefix)
 		prefix = 0;
 	}
 	if (n / 16 != 0)
-		print_dec_to_hex(n / 16, flag, prefix);
+		count = print_dec_to_hex(n / 16, flag, prefix, count);
 	rem = n % 16;
 	if (rem >= 10 && flag == 'x')
-		ft_putchar_fd(rem + 87, 1);
+		ft_putchar(rem + 87);
 	else if (rem >= 10 && flag == 'X')
-		ft_putchar_fd(rem + 55, 1);
+		ft_putchar(rem + 55);
 	else
-		ft_putnbr_fd(rem, 1);
+		ft_putnbr(rem, 0);
+	count++;
+	return (count);
 }
 
-static void	print_address(unsigned long address, int flag, int prefix)
+static int	print_address(unsigned long address, int flag, int prefix,
+		int count)
 {
 	unsigned int	rem;
 
@@ -28,21 +34,26 @@ static void	print_address(unsigned long address, int flag, int prefix)
 	{
 		write(1, "0x", 2);
 		prefix = 0;
+		count += 2;
 	}
 	if (address / 16 != 0)
-		print_address(address / 16, flag, prefix);
+		count = print_address(address / 16, flag, prefix, count);
 	rem = address % 16;
 	if (rem >= 10 && flag == 0)
-		ft_putchar_fd(rem + 87, 1);
+		ft_putchar(rem + 87);
 	else if (rem >= 10 && flag == 1)
-		ft_putchar_fd(rem + 55, 1);
+		ft_putchar(rem + 55);
 	else
-		ft_putnbr_fd(rem, 1);
+		ft_putnbr(rem, 0);
+	count++;
+	return (count);
 }
 
-static void	print_unsigned_int(unsigned int n)
+static int	print_unsigned_int(unsigned int n, int count)
 {
 	if (n >= 10)
-		print_unsigned_int(n / 10);
-	ft_putchar_fd((n % 10) + '0', 1);
+		count = print_unsigned_int(n / 10, count);
+	ft_putchar((n % 10) + '0');
+	count++;
+	return (count);
 }
