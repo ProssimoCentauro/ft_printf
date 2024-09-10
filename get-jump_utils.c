@@ -1,4 +1,5 @@
-//#include "ft_printf.h"
+#include "ft_printf.h"
+
 static char	get_char(const char *s)
 {
 	s++;

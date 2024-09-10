@@ -1,7 +1,4 @@
-//#include "ft_printf.h"
-//#include <unistd.h>
-//#include "libc_utils.c"
-//#include "ft_printf.c"
+#include "ft_printf.h"
 
 static int	print_dec_to_hex(unsigned int n, char flag, int prefix, int count)
 {
