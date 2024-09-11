@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int	print_dec_to_hex(unsigned int n, char flag, int prefix, int count)
+int	print_dec_to_hex(unsigned int n, char flag, int prefix, int count)
 {
 	unsigned int	rem;
 
@@ -22,7 +22,7 @@ static int	print_dec_to_hex(unsigned int n, char flag, int prefix, int count)
 	return (count);
 }
 
-static int	print_address(unsigned long address, int flag, int prefix,
+int	print_address(unsigned long address, int flag, int prefix,
 		int count)
 {
 	unsigned int	rem;
@@ -46,7 +46,7 @@ static int	print_address(unsigned long address, int flag, int prefix,
 	return (count);
 }
 
-static int	print_unsigned_int(unsigned int n, int count)
+int	print_unsigned_int(unsigned int n, int count)
 {
 	if (n >= 10)
 		count = print_unsigned_int(n / 10, count);

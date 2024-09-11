@@ -1,6 +1,23 @@
 #include "ft_printf.h"
 
-int	func_select(const char *s, va_list args)
+static char    get_char(const char *s)
+{
+    s++;
+    while ((*s == '-') || (*s == '0') || (*s == '.') || ((*s >= '0')
+            && (*s <= '9')) || (*s == '#') || (*s == ' ') || (*s == '+'))
+        s++;
+    return (*s);
+}
+
+static const char  *jump_index(const char *s)
+{
+    s++;
+    while (*s == ' ')
+        s++;
+    return (&*s);
+}
+
+static int	func_select(const char *s, va_list args)
 {
 	int	count;
 
