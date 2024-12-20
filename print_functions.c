@@ -27,7 +27,11 @@ int	print_address(unsigned long address, int flag, int prefix,
 {
 	unsigned int	rem;
 
-	if (prefix == 1)
+    if (!address)
+    {
+        return (ft_putstr(FT_NULL_PTR));
+    }
+    if (prefix == 1)
 	{
 		write(1, "0x", 2);
 		prefix = 0;

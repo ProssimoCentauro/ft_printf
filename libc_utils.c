@@ -6,14 +6,16 @@ int	ft_putchar(char c)
 	return (1);
 }
 
-int	ft_putstr(char *c)
+int	ft_putstr(char *str)
 {
 	int	count;
 
-	count = 0;
-	while (*c)
+    if (!str)
+        return (ft_putstr(FT_NULL_STR));
+    count = 0;
+	while (*str)
 	{
-		write(1, c++, 1);
+		write(1, str++, 1);
 		count++;
 	}
 	return (count);
