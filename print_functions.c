@@ -22,16 +22,15 @@ int	print_dec_to_hex(unsigned int n, char flag, int prefix, int count)
 	return (count);
 }
 
-int	print_address(unsigned long address, int flag, int prefix,
-		int count)
+int	print_address(unsigned long address, int flag, int prefix, int count)
 {
 	unsigned int	rem;
 
-    if (!address)
-    {
-        return (ft_putstr(FT_NULL_PTR));
-    }
-    if (prefix == 1)
+	if (!address)
+	{
+		return (ft_putstr(FT_NULL_PTR));
+	}
+	if (prefix == 1)
 	{
 		write(1, "0x", 2);
 		prefix = 0;

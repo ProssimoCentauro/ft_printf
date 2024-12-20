@@ -10,9 +10,9 @@ int	ft_putstr(char *str)
 {
 	int	count;
 
-    if (!str)
-        return (ft_putstr(FT_NULL_STR));
-    count = 0;
+	if (!str)
+		return (ft_putstr(FT_NULL_STR));
+	count = 0;
 	while (*str)
 	{
 		write(1, str++, 1);
