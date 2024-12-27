@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/27 15:15:21 by rtodaro           #+#    #+#             */
+/*   Updated: 2024/12/27 15:19:14 by rtodaro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static char	get_char(const char *s)
@@ -7,14 +19,6 @@ static char	get_char(const char *s)
 			&& (*s <= '9')) || (*s == '#') || (*s == ' ') || (*s == '+'))
 		s++;
 	return (*s);
-}
-
-static const char	*jump_index(const char *s)
-{
-	s++;
-	while (*s == ' ')
-		s++;
-	return (&*s);
 }
 
 static int	func_select(const char *s, va_list args)
@@ -54,8 +58,7 @@ int	ft_printf(const char *s, ...)
 		if (*s == '%')
 		{
 			count += func_select(s, args);
-			s = jump_index(s);
-			s++;
+			s = s + 2;
 		}
 		else
 		{

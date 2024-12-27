@@ -4,7 +4,7 @@ SRCS = ft_printf.c libc_utils.c print_functions.c
 
 OBJS = ${SRCS:.c=.o}
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 AR = ar crs

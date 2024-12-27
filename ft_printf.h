@@ -1,8 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/27 15:15:14 by rtodaro           #+#    #+#             */
+/*   Updated: 2024/12/27 15:15:16 by rtodaro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define FT_NULL_STR "(null)"
-# define FT_NULL_PTR "(nil)"
+# ifndef FT_NULL_STR
+#  define FT_NULL_STR "(null)"
+# endif
+
+# ifndef FT_NULL_PTR
+#  define FT_NULL_PTR "(nil)"
+# endif
 
 # include <stdarg.h>
 # include <stdlib.h>
